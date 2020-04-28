@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_extensions",
     ## Personal Apps
     "product.apps.ProductConfig",
+    "openfoodfacts.apps.OpenfoodfactsConfig",
 ]
 
 MIDDLEWARE = [
@@ -84,13 +85,12 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "purbeurre",
-        "USER": "postgres",
-        "PASSWORD": "root",
+        "USER": environ["USER"],
+        "PASSWORD": environ["PASSWORD"],
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
-
 
 INTERNAL_IPS = [
     "127.0.0.1",

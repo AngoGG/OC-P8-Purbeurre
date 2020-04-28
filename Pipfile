@@ -9,6 +9,9 @@ verify_ssl = true
 django = "~=2.2"
 django-stubs = "*"
 psycopg2 = "*"
+django-debug-toolbar = "*"
+django-extensions = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"
