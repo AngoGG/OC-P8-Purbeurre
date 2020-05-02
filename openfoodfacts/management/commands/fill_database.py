@@ -1,4 +1,5 @@
 from django.core.management.base import BaseCommand
+from django.contrib.auth.models import User
 
 from product.models import Category, Product
 from openfoodfacts.api import Api, DataCleaner
@@ -21,6 +22,5 @@ class Command(BaseCommand):
             result = api.get_data(category)
             category = Category.objects.create(name=category)
             for product in clean_datas.get_product(result, category):
-                print(product["code"])
                 Product.objects.create(**product)
                 category.products.add(product["code"])

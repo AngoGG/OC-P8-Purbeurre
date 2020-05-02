@@ -13,12 +13,12 @@ class Api:
             "action": "process",
             "tagtype_0": "categories",
             "tag_contains_0": "contains",
-            "tag_0": "Chips",
+            "tag_0": "Boissons",
             "sort_by": "unique_scans_n",
             "countries": "France",
             "purchase_places": "France",
             "page": 1,
-            "page_size": 50,
+            "page_size": 1000,
             "json": 1,
         }
 
@@ -30,8 +30,7 @@ class Api:
     def get_data(self, category: str) -> Dict:
         """ Gets data from the given category and returns it"""
         self.payloads["tag_0"] = category
-        result = self.request()
-        return result
+        return self.request()
 
 
 class DataCleaner:
@@ -46,6 +45,7 @@ class DataCleaner:
             "categories",
             "url",
             "image_url",
+            "image_nutrition_url",
         ]
 
     def get_product(self, datas: Dict[str, Any], category: str) -> Generator:
@@ -58,6 +58,7 @@ class DataCleaner:
                     "nutriscore_grade": data["nutriscore_grade"].upper(),
                     "url": data["url"],
                     "image": data["image_url"],
+                    "nutrient_levels": data["image_nutrition_url"],
                 }
                 yield product
 
@@ -69,6 +70,4 @@ class DataCleaner:
                 return False
             elif len(product[field]) == 0:
                 return False
-        if not product["stores_tags"]:
-            return False
         return True
