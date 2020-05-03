@@ -38,4 +38,4 @@ class Command(BaseCommand):
         fill_database: FillDatabase = FillDatabase(categories)
         fill_database.run()
 
-        print("Récupération")
+        print("Récupération terminée")
