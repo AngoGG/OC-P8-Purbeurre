@@ -1,26 +1,41 @@
 from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
-
+from typing import List
 from product.models import Category, Product
 from openfoodfacts.api import Api, DataCleaner
 
 
-class Command(BaseCommand):
-    help = "Lance la récupération des données de l'API OpenFoodFacts pour remplir la base de données PurBeurre"
+class FillDatabase:
+    """ Class in charge of OpenFoodFacts data recovery and integration in database """
 
-    def handle(self, *args, **options):
-        print("Lancement de la récupération des données de l'API OFF")
+    def __init__(self, categories: List[str]) -> None:
+        self.api: Api = Api()
+        self.clean_datas: DataCleaner = DataCleaner()
+        self.categories: List[str] = categories
 
-        CATEGORIES = [
-            "Sodas",
-        ]
-        api: Api = Api()
-        clean_datas: DataCleaner = DataCleaner()
+    def run(self) -> None:
         Product.objects.all().delete()
         Category.objects.all().delete()
-        for category in CATEGORIES:
-            result = api.get_data(category)
+        for category in self.categories:
+            result = self.api.get_data(category)
             category = Category.objects.create(name=category)
-            for product in clean_datas.get_product(result, category):
+            for product in self.clean_datas.get_product(result, category):
                 Product.objects.create(**product)
                 category.products.add(product["code"])
+
+
+class Command(BaseCommand):
+    help: str = "Lance la récupération des données de l'API OpenFoodFacts pour remplir la base de données PurBeurre"
+
+    def handle(self, *args, **options) -> None:
+        print("Lancement de la récupération des données de l'API OFF")
+
+        # Récupération des catégories à gérer
+        # Si catégories en argument go, sinon go YML
+        categories = [
+            "Sodas",
+        ]
+        fill_database: FillDatabase = FillDatabase(categories)
+        fill_database.run()
+
+        print("Récupération")
