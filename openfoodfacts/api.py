@@ -18,7 +18,7 @@ class Api:
             "countries": "France",
             "purchase_places": "France",
             "page": 1,
-            "page_size": 1000,
+            "page_size": 20,
             "json": 1,
         }
 
@@ -55,7 +55,7 @@ class DataCleaner:
                 product: Dict = {
                     "code": data["code"],
                     "name": data["product_name"],
-                    "nutriscore_grade": data["nutriscore_grade"].upper(),
+                    "nutriscore_grade": data["nutriscore_grade"],
                     "url": data["url"],
                     "image": data["image_url"],
                     "nutrient_levels": data["image_nutrition_url"],
