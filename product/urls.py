@@ -1,9 +1,11 @@
+from django.urls import path
 from django.conf.urls import include, url
 from django.conf import settings
 from . import views
 
 urlpatterns = [
-    url(r"^", views.index),
+    path(r"", views.index, name="index"),
+    path(r"<int:code_product>/", views.detail, name="detail"),
 ]
 
 if settings.DEBUG:

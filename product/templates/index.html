@@ -2,6 +2,6 @@
 
 <url>
 {% for product in products%}
-    <li><img src="{{ product.image }}"/> {{ product.name }}, {{ product.code }}, Nutriscore : <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ product.nutriscore_grade }}.png" </li>
+    <li>{{ product.name }}, <a href=" {% url "detail" product.code %}">{{ product.code }}</a></li>
 {% endfor %}
 </ul>
