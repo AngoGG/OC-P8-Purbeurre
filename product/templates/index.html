@@ -1,5 +1,4 @@
 <h1>Produits</h1>
-
 <url>
 {% for product in products%}
     <li>{{ product.name }}, <a href=" {% url "detail" product.code %}">{{ product.code }}</a></li>
