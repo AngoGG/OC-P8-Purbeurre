@@ -17,6 +17,9 @@ from django.conf.urls import url, include
 from django.conf import settings
 from . import views
 
+
+app_name: str = "app"
+
 urlpatterns = [
     url(r"", views.home, name="home"),
 ]

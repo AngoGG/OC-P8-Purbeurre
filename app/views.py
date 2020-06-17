@@ -6,5 +6,5 @@ from django.template import loader
 
 
 def home(request):
-    return render(request, "app/base.html")
+    return render(request, "app/home.html")
 

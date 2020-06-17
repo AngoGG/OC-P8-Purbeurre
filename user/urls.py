@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.conf import settings
 from . import views
 
+app_name: str = "user"
+
 urlpatterns = [
     url(r"^connection$", views.connection, name="connexion"),
     url(r"^disconnection$", views.disconnection, name="deconnexion"),
