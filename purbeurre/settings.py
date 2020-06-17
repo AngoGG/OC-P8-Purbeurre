@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django_extensions",
     ## Personal Apps
     "product.apps.ProductConfig",
+    "user.apps.UserConfig",
     "openfoodfacts.apps.OpenfoodfactsConfig",
 ]
 
