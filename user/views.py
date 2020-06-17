@@ -1,6 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
 from .forms import ConnectionForm
 
@@ -23,12 +23,11 @@ def connection(request):
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
-            user = authenticate(
-                username=username, password=password
-            )  # Nous vérifions si les données sont correctes
-            if user:  # Si l'objet renvoyé n'est pas None
-                login(request, user)  # nous connectons l'utilisateur
-            else:  # sinon une erreur sera affichée
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect("/products/")
+            else:
                 error = True
     else:
         form = ConnectionForm()
