@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "django_extensions",
     ## Personal Apps
+    "app.apps.AppConfig",
     "product.apps.ProductConfig",
     "user.apps.UserConfig",
     "openfoodfacts.apps.OpenfoodfactsConfig",
@@ -94,9 +95,9 @@ WSGI_APPLICATION = "purbeurre.wsgi.application"
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
 
