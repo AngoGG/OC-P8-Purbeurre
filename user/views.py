@@ -26,7 +26,7 @@ def connection(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                return redirect("/products/")
+                return redirect("/")
             else:
                 error = True
     else:
@@ -44,4 +44,4 @@ def disconnection(request):
     """
 
     logout(request)
-    return redirect(reverse(connection))
+    return redirect("/")
