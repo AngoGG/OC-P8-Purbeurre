@@ -56,6 +56,7 @@ class TestUserManager(TestCase):
         self.assertEqual("firstname", user_created.first_name)
         self.assertEqual("lastname", user_created.last_name)
         self.assertTrue(user_created.is_superuser)
+        self.assertTrue(user_created.is_staff)
 
         with pytest.raises(ValueError) as ExceptionInfo:
             user: User = User.objects.create_superuser(
@@ -65,6 +66,16 @@ class TestUserManager(TestCase):
                 last_name="lastname",
             )
         ExceptionInfo.match(r"The given email must be set.")
+
+        with pytest.raises(ValueError) as ExceptionInfo:
+            user: User = User.objects.create_superuser(
+                email="mail@mail.com",
+                password="password",
+                first_name="firstname",
+                last_name="lastname",
+                is_staff=False,
+            )
+        ExceptionInfo.match(r"Superuser must have is_staff=True.")
 
         with pytest.raises(ValueError) as ExceptionInfo:
             user: User = User.objects.create_superuser(
