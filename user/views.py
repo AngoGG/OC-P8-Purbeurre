@@ -33,20 +33,22 @@ class RegistrationView(FormView):
         return redirect("/")
 
 
-def connection(request):
-    """Method Description.
-    Description details here (if needed).
-    
-    Args:
-        name (type): Description. Default to False.
-    
-    Raises:
-    Returns:
-    """
+class LoginView(FormView):
+    def get(self, request):
+        return render(request, "user/connection.html", {"form": ConnectionForm()})
 
-    error = False
+    def post(self, request):
+        """Method Description.
+        Description details here (if needed).
+        
+        Args:
+            name (type): Description. Default to False.
+        
+        Raises:
+        Returns:
+        """
+        error = False
 
-    if request.method == "POST":
         form = ConnectionForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
@@ -57,10 +59,7 @@ def connection(request):
                 return redirect("/")
             else:
                 error = True
-    else:
-        form = ConnectionForm()
-
-    return render(request, "user/connection.html", locals())
+        return render(request, "user/connection.html", locals())
 
 
 def disconnection(request):

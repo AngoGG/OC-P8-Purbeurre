@@ -30,3 +30,37 @@ class TestRegistrationView(TestCase):
         response = client.get("/user/register")
         assert response.status_code == 200  # Testing redirection
 
+
+class TestLoginView(TestCase):
+    def test_login_success(self) -> None:
+        User.objects.create_user(
+            email="test@mail.com",
+            password="password8chars",
+            first_name="firstname",
+            last_name="lastname",
+        )
+        client: Client = Client()
+        response = client.post(
+            "/user/login",
+            {"username": ["test@mail.com"], "password": ["password8chars"],},
+        )
+        assert response.status_code == 302  # Testing redirection
+
+    def test_login_fail(self) -> None:
+        User.objects.create_user(
+            email="test@mail.com",
+            password="password8chars",
+            first_name="firstname",
+            last_name="lastname",
+        )
+        client: Client = Client()
+        response = client.post(
+            "/user/login",
+            {"username": ["test@mail.com"], "password": ["wrongpassword"],},
+        )
+        assert response.status_code == 200  # Testing redirection
+
+    def test_login_get(self) -> None:
+        client: Client = Client()
+        response = client.get("/user/login")
+        assert response.status_code == 200  # Testing redirection
