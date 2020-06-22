@@ -22,6 +22,7 @@ app_name: str = "user"
 urlpatterns = [
     url(r"^connection$", views.connection, name="connexion"),
     url(r"^disconnection$", views.disconnection, name="deconnexion"),
+    url(r"^register$", views.RegistrationView.as_view(), name="register"),
 ]
 
 if settings.DEBUG:
