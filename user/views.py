@@ -62,16 +62,7 @@ class LoginView(FormView):
         return render(request, "user/connection.html", locals())
 
 
-def disconnection(request):
-    """Method Description.
-    Description details here (if needed).
-    
-    Args:
-        name (type): Description. Default to False.
-    
-    Raises:
-    Returns:
-    """
-
-    logout(request)
-    return redirect("/")
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect("/")

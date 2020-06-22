@@ -30,12 +30,13 @@
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Recherche</a></li>
                         {% if user.is_authenticated %}
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Mon Compte</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">Voir compte de {{ user.first_name }}</a></li>
                         {% endif %}
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#"><img src="{% static "img/carrot.png" %}" alt="My image" width="50px" height="auto"></a></li>
                         {% if not user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">Connexion</a></li>
                         {% else %}
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:logout" %}">Déconnexion</a></li>
                         {% endif %}
                         
                     </ul>
