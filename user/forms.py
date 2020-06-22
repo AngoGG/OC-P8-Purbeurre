@@ -19,7 +19,7 @@ class ConnectionForm(forms.Form):
         name (type): Description. Default to False.
     """
 
-    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
+    username = forms.CharField(label="Adresse email", max_length=30)
     password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
 
 
