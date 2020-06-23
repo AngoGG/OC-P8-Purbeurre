@@ -36,7 +36,8 @@
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
                         <form action="{% url "product:index" %}" method="get">
-                            <input id="category" type="text" name="category" class="input-sm form-control"
+                            {% csrf_token %}
+                            <input id="search" type="text" name="search" class="input-sm form-control"
                                 placeholder="Rechercher" required>
                         </form>
                     </li>

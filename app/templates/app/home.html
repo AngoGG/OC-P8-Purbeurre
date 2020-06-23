@@ -22,7 +22,7 @@
                 <form action="{% url "product:index" %}" method="get">
                     <div class="input-group">
                         {% csrf_token %}
-                        <input id="category" type="text" name="category" maxlength="50" class="input-sm form-control"
+                        <input id="search" type="text" name="search" maxlength="50" class="input-sm form-control"
                             placeholder="Produit" required>
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary btn-sm">Chercher</button>
