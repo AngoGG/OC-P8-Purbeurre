@@ -66,3 +66,8 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect("/")
+
+
+class ProfileView(View):
+    def get(self, request):
+        return render(request, "user/profile.html")

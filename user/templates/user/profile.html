@@ -1,0 +1,32 @@
+{% extends "app/base.html" %}
+
+{% block title %}
+- Mon Compte {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<section class="page-section bg-dark text-white h-25">
+    <div class="container">
+        <h2 class="text-white font-weight-bold text-center">
+            <p>Ahoy, {{ user.first_name }} </p>
+        </h2>
+    </div>
+</section>
+<section class="page-section bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-lg-8 text text-center">
+                <h2 class="text-white text-center">
+                    <p>
+                        {% if user.is_authenticated %}
+                        {{ user.email }}
+                        {% endif %}
+                    </p>
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
