@@ -43,9 +43,11 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:profile" %}">
-                            <div class="ml-2">Voir
-                                compte de
-                                {{ user.first_name }}</div>
+                            <div class="ml-2">Mon compte</div>
+                        </a></li>
+                    {% else %}
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
+                            <div class="ml-2">Créer un compte</div>
                         </a></li>
                     {% endif %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">
