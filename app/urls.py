@@ -21,7 +21,7 @@ from . import views
 app_name: str = "app"
 
 urlpatterns = [
-    url(r"", views.home, name="home"),
+    url(r"", views.HomeView.as_view(), name="home"),
 ]
 
 if settings.DEBUG:
