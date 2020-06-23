@@ -9,8 +9,8 @@
 
 
 <!-- Masthead-->
-<header class="masthead">
-    <div class="container h-100">
+<header class="masthead" style="background-image: url('{% static 'img/background.jpg' %}'" )>
+    <div class=" container h-100">
         <div class="row h-100 align-items-center justify-content-center text-center">
             <div class="col-lg-10 align-self-end">
                 <h1 class="text-white font-weight-bold">Du gras, oui, mais de qualité!</h1>
@@ -20,10 +20,14 @@
             </div>
             <div class="col-lg-8 align-self-baseline">
                 <form action="{% url "product:index" %}" method="get">
-                    {% csrf_token %}
-                    <label for="searchForm">Sélectionnez une catégorie: </label>
-                    <input id="category" type="text" name="category" maxlength="100" required>
-                    <input type="submit" value="Rechercher">
+                    <div class="input-group">
+                        {% csrf_token %}
+                        <input id="category" type="text" name="category" maxlength="50" class="input-sm form-control"
+                            placeholder="Produit" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary btn-sm">Chercher</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
