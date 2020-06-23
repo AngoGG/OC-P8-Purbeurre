@@ -6,17 +6,16 @@
     <div class="container">
         <h2 class="text-center mt-0">Produits</h2>
         <hr class="divider my-4" />
-        <div class="row">
-            <div class="col-lg-5 col-md-6 text-center">
-                <div class="mt-5">
-                    <url>
-                    {% for product in products%}
-                        <li>{{ product.name }}, <a href=" {% url "product:detail" product.code %}">{{ product.code }}</a></li>
-                    {% endfor %}
-                    </ul>
-                </div>
-            </div>
+        <div class="row text-center"">
+            {% for product in products%}
+            <div class=" col-12 col-md-4">
+            <a href=" {% url "product:detail" product.code %}">
+                <img class="center-block" height="300" src=" {{ product.image }}" />
+            </a>
+            <p class="text-center">{{ product.name }}</p>
         </div>
+        {% endfor %}
+    </div>
     </div>
 </section>
 {% endblock %}
