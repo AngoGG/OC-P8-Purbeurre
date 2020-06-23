@@ -10,7 +10,7 @@
             {% for product in products%}
             <div class=" col-12 col-md-4">
             <a href=" {% url "product:detail" product.code %}">
-                <img class="center-block" height="300" src=" {{ product.image }}" />
+                <img class="img-fluid mx-auto d-block img-thumbnail" height="300" src=" {{ product.image }}" />
             </a>
             <p class="text-center">{{ product.name }}</p>
         </div>
