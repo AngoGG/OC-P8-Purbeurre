@@ -1,14 +1,15 @@
 {% extends "app/base.html" %}
 
 {% block title %}
-    Create User - {{ block.super }}
+- Création Compte{{ block.super }}
 {% endblock %}
- 
+
 {% block content %}
 
 <section class="page-section bg-dark text-white">
     <div class="container">
-        <h2 class="text-white font-weight-bold text-center">Veuillez entrer les informations ci-dessous afin de créer votre compte</h2>
+        <h2 class="text-white font-weight-bold text-center">Veuillez entrer les informations ci-dessous afin de créer
+            votre compte</h2>
         <hr class="divider my-4">
         <div class="row">
             <div class="col-sm-2"></div>
@@ -17,7 +18,7 @@
                     {% csrf_token %}
                     {% for field in form %}
                     <div class="form-group">
-                        {{ field.label_tag }}<br/>
+                        {{ field.label_tag }}<br />
                         {{ field }}
                         {% if field.help_text %}
                         <div class="form-text text-muted">
@@ -33,7 +34,7 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 </section>
 {% endblock %}
