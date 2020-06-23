@@ -1,14 +1,15 @@
 {% extends "app/base.html" %}
 
 {% block title %}
-    Login User - {{ block.super }}
+Login User - {{ block.super }}
 {% endblock %}
- 
+
 {% block content %}
 
 <section class="page-section bg-dark text-white">
     <div class="container">
-        <h2 class="text-white font-weight-bold text-center">Veuillez entrer vos informations afin de créer vous connecter à votre compte </h2>
+        <h2 class="text-white font-weight-bold text-center">Veuillez entrer vos informations afin de créer vous
+            connecter à votre compte </h2>
         <hr class="divider my-4">
         <div class="row">
             <div class="col-sm-2"></div>
@@ -19,11 +20,12 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input type="submit" value="Se connecter" />
+                    <input type="submit" value="Se connecter" /><a href=" {% url "user:register" %}"> Pas encore de
+                        compte ? S'enregistrer</a>
                 </form>
             </div>
         </div>
-        
+
     </div>
 </section>
 {% endblock %}
