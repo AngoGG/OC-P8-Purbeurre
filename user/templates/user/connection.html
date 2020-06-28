@@ -20,8 +20,9 @@
                 <form method="post">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <input type="submit" value="Se connecter" /><a href=" {% url "user:register" %}"> Pas encore de
-                        compte ? S'enregistrer</a>
+                    <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+                    <p><a href=" {% url "user:register" %}"> Pas encore de
+                        compte ? S'enregistrer</a></p>
                 </form>
             </div>
         </div>
