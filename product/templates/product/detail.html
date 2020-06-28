@@ -2,17 +2,70 @@
 {% load static %}
 
 {% block content %}
-<section class="page-section bg-dark text-white">
+
+<section class="page-section h-25 first_section bg-dark text-white">
     <div class="container">
-        <h2 class="text-center mt-0">{{ product.name }}</h2>
-        <hr class="divider my-4" />
+      <div class="row justify-content-center">
+        <div class="col-lg-auto">
+          <h1 class="section_title text-center">{{ product.name }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="page-section h-auto">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 text-center">
+            <div class="col-lg-4 col-md-6 text-center">
                 <div class="mt-5">
-                    <p> <b>Code-Barre Produit :</b> {{ product.code }}<p>
-                    <p> <img src="{{ product.image }}"/><p>
                     <p> <img src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ product.nutriscore_grade }}.png"><p>
                 </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="mt-5">
+                    <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td colspan="2"><b>Valeurs Nutrionnelles pour 100g</b></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Glucides</td>
+                            <td>{{ product.carbohydrates_100g }} g</td>
+                        </tr>
+                        <tr>
+                            <td>Donc sucre</td>
+                            <td>{{ product.sugars_100g }} g</td>
+                        </tr>
+                        <tr>
+                            <td>Matières Grasses</td>
+                            <td>{{ product.fat_100g }} g</td>
+                        </tr>
+                        <tr>
+                            <td>Protéines</td>
+                            <td>{{ product.proteins_100g }} g</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Sel</td>
+                            <td>{{ product.salt_100g }} g</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 text-center">
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+            <p><a href="{{ product.url }}"><button type="submit" class="btn btn-primary btn-block">Voir la Fiche du Produit sur OpenfoodFacts</button></a></p>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
             </div>
         </div>
     </div>
