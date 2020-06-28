@@ -18,6 +18,7 @@ class Product(models.Model):
     saturated_fat_100g: models.FloatField = models.FloatField(null=True)
     proteins_100g: models.FloatField = models.FloatField(null=True)
     salt_100g: models.FloatField = models.FloatField(null=True)
+    kcal_100g: models.FloatField = models.FloatField(null=True)
 
     def __str__(self):
         return self.name
