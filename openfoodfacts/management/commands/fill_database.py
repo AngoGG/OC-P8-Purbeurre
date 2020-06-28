@@ -32,9 +32,7 @@ class Command(BaseCommand):
 
         # Récupération des catégories à gérer
         # Si catégories en argument go, sinon go YML
-        categories = [
-            "Sodas",
-        ]
+        categories = ["Sodas", "Viandes", "Fromages", "Biscuits"]
         fill_database: FillDatabase = FillDatabase(categories)
         fill_database.run()
 

@@ -18,6 +18,15 @@ class TestApi:
             data_cleaner._product_is_valid(Config.PRODUCT_DATA_MISSING_FIELD) == False
         )
 
+    def test__nutrients_are_valid(self) -> None:
+        """ Method testing the generation of a product for database insertion """
+        data_cleaner: DataCleaner = DataCleaner()
+        assert data_cleaner._nutrients_are_valid(Config.VALID_NUTRIMENTS_DATA) == True
+        assert (
+            data_cleaner._nutrients_are_valid(Config.NUTRIMENTS_DATA_MISSING_FIELD)
+            == False
+        )
+
     def test_get_product(self) -> None:
         """ Method testing the generation of a product for database insertion """
         results = Config.PRODUCT_RESULTS
@@ -28,7 +37,7 @@ class TestApi:
     @pytest.mark.django_db(transaction=True)
     def test_insert_database(self):
         """ Method testing the insertion of a product into a database """
-        results = Config.PRODUCT_RESULTS
+        results = Config.DATABASE_EXPECTED
         category = Category.objects.create(name="Boissons")
         Product.objects.create(**results)
         category.products.add(results["code"])
