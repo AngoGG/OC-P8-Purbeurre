@@ -51,9 +51,10 @@ class DataCleaner:
             "carbohydrates_100g",
             "sugars_100g",
             "fat_100g",
-            "proteins_100g",
+            "saturated-fat_100g",
             "proteins_100g",
             "salt_100g",
+            "energy-kcal_100g",
         ]
 
     def get_product(self, datas: Dict[str, Any], category: str) -> Generator:
@@ -74,8 +75,9 @@ class DataCleaner:
                         "saturated_fat_100g": data["nutriments"]["saturated-fat_100g"],
                         "proteins_100g": data["nutriments"]["proteins_100g"],
                         "salt_100g": data["nutriments"]["salt_100g"],
+                        "kcal_100g": data["nutriments"]["energy-kcal_100g"],
                     }
-                yield product
+                    yield product
 
     def _product_is_valid(self, product: Dict[str, Any]) -> bool:
         """ Verifies the presence of all the elements required for a product

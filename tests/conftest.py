@@ -144,6 +144,7 @@ class Config:
         "salt_100g": "0.00127",
         "saturated_fat_100g": 0,
         "sugars_100g": 0,
+        "kcal_100g": 0,
     }
 
     VALID_NUTRIMENTS_DATA = {
@@ -151,8 +152,9 @@ class Config:
         "fat_100g": 0,
         "proteins_100g": 0,
         "salt_100g": "0.00127",
-        "saturated_fat_100g": 0,
+        "saturated-fat_100g": 0,
         "sugars_100g": 0,
+        "energy-kcal_100g": 0,
     }
 
     NUTRIMENTS_DATA_MISSING_FIELD = {
@@ -161,6 +163,7 @@ class Config:
         "salt_100g": "0.00127",
         "saturated_fat_100g": 0,
         "sugars_100g": 0,
+        "energy-kcal_100g": 0,
     }
 
     DATABASE_EXPECTED = {
@@ -176,4 +179,5 @@ class Config:
         "salt_100g": 0.00127,
         "saturated_fat_100g": 0,
         "sugars_100g": 0,
+        "kcal_100g": 0,
     }
