@@ -23,6 +23,10 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    @staticmethod
+    def get_substitute(product_code):
+        return Product.objects.filter(nutriscore_grade__lt="c",)
+
 
 class Category(models.Model):
     name: models.CharField = models.CharField(max_length=255, blank=False, unique=True)

@@ -181,3 +181,39 @@ class Config:
         "sugars_100g": 0,
         "kcal_100g": 0,
     }
+
+    PRODUCT_AND_SUBSTITUTE_DATA = {
+        "product": [
+            {
+                "code": "3068320115160",
+                "name": "Bad Product",
+                "nutriscore_grade": "d",
+                "url": "https://world.openfoodfacts.org/product/3068320115160/la-salvetat",
+                "image": "https://static.openfoodfacts.org/images/products/306/832/011/5160/front_fr.131.400.jpg",
+                "nutrient_levels": "https://static.openfoodfacts.org/images/products/306/832/011/5160/nutrition_fr.147.400.jpg",
+                "carbohydrates_100g": 0,
+                "fat_100g": 0,
+                "proteins_100g": 0,
+                "salt_100g": 0.00127,
+                "saturated_fat_100g": 0,
+                "sugars_100g": 0,
+                "kcal_100g": 0,
+            },
+            {
+                "code": "3068320115161",
+                "name": "Better Product",
+                "nutriscore_grade": "a",
+                "url": "https://world.openfoodfacts.org/product/3068320115160/la-salvetat",
+                "image": "https://static.openfoodfacts.org/images/products/306/832/011/5160/front_fr.131.400.jpg",
+                "nutrient_levels": "https://static.openfoodfacts.org/images/products/306/832/011/5160/nutrition_fr.147.400.jpg",
+                "carbohydrates_100g": 0,
+                "fat_100g": 0,
+                "proteins_100g": 0,
+                "salt_100g": 0.00127,
+                "saturated_fat_100g": 0,
+                "sugars_100g": 0,
+                "kcal_100g": 0,
+            },
+        ]
+    }
+
