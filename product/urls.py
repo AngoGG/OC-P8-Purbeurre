@@ -7,7 +7,7 @@ app_name: str = "product"
 
 urlpatterns = [
     path(r"search/", views.IndexView.as_view(), name="index"),
-    path(r"<int:code_product>/", views.detail, name="detail"),
+    path(r"<int:code_product>/", views.DetailView.as_view(), name="detail"),
 ]
 
 if settings.DEBUG:
