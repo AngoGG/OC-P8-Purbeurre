@@ -4,12 +4,12 @@
 
 <section class="page-section bg-dark text-white">
     <div class="container">
-        <h2 class="text-center mt-0">Produits</h2>
+        <h2 class="text-center mt-0">Vous pouvez remplacer ce produit par l'un des suivants:</h2>
         <hr class="divider my-4" />
         <div class="row text-center"">
             {% for product in products%}
             <div class=" col-12 col-md-4">
-            <a href=" {% url "product:search_substitutes" product.code %}">
+            <a href=" {% url "product:detail" product.code %}">
                 <img class="img-fluid mx-auto d-block img-thumbnail" height="300" src=" {{ product.image }}" />
             </a>
             <p class="text-center">{{ product.name }}</p>

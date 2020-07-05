@@ -8,6 +8,11 @@ app_name: str = "product"
 urlpatterns = [
     path(r"search/", views.IndexView.as_view(), name="index"),
     path(r"<int:code_product>/", views.DetailView.as_view(), name="detail"),
+    path(
+        r"substitutes/<int:code_product>/",
+        views.SubstituteIndexView.as_view(),
+        name="search_substitutes",
+    ),
 ]
 
 if settings.DEBUG:

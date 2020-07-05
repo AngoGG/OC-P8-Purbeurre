@@ -20,3 +20,17 @@ class TestDetailView(TestCase):
         code_product = Config.DATABASE_EXPECTED["code"]
         response = client.get(f"/products/{code_product}/")
         assert response.status_code == 200
+
+
+class TestSubstituteView(TestCase):
+    @pytest.mark.django_db(transaction=True)
+    def test_detail_get(self) -> None:
+        client: Client = Client()
+        product_code = "3068320115161"
+        category = Category.objects.create(name="Boissons")
+        for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
+            Product.objects.create(**product)
+            category.products.add(product["code"])
+        response = client.get(f"/products/substitutes/{product_code}/")
+        assert response.status_code == 200
+

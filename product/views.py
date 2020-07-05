@@ -16,3 +16,10 @@ class DetailView(View):
         product = Product.objects.get(code=code_product)
         return render(request, "product/detail.html", {"product": product})
 
+
+class SubstituteIndexView(View):
+    def get(self, request, code_product):
+        substitutes = Product.get_substitute(code_product)
+        return render(
+            request, "product/substitutes_index.html", {"products": substitutes}
+        )
