@@ -10,7 +10,6 @@ class TestProducts(TestCase):
         results = Config.PRODUCT_RESULTS
         Product.objects.create(**results)
         product = Product.objects.first()
-
         self.assertEqual(str(product), product.name)
 
     def test_get_substitute(self) -> None:

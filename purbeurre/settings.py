@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "app.apps.AppConfig",
     "product.apps.ProductConfig",
     "user.apps.UserConfig",
+    "substitute.apps.SubstituteConfig",
     "openfoodfacts.apps.OpenfoodfactsConfig",
 ]
 
@@ -108,7 +109,7 @@ INTERNAL_IPS = [
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
-AUTH_USER_MODEL = 'user.User'
+AUTH_USER_MODEL = "user.User"
 
 AUTH_PASSWORD_VALIDATORS = [
     {
