@@ -25,7 +25,10 @@ class Product(models.Model):
 
     @staticmethod
     def get_substitute(product_code):
-        return Product.objects.filter(nutriscore_grade__lt="c",)
+        product_category = Product.get_category(product_code)[0]
+        return Product.objects.filter(
+            nutriscore_grade__lte="c", category__name=product_category
+        )
 
     @staticmethod
     def get_category(product_code):
