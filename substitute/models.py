@@ -16,3 +16,15 @@ class Substitute(models.Model):
         Product, on_delete=models.CASCADE, related_name="substitute",
     )
 
+    class Meta:
+        db_table = "substitute"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["user", "product", "substitute"],
+                name="unique favorite substitute",
+            )
+        ]
+
+    @staticmethod
+    def add_favorite(user, product, substitute):
+        Substitute.objects.create(user=user, product=product, substitute=substitute)
