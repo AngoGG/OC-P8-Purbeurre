@@ -10,19 +10,22 @@
         <div class="row text-center"">
             {% for substitute in substitutes%}
             <div class=" col-12 col-md-4">
-                <a href=" {% url "product:detail" substitute.code %}">
-                    <img class="img-fluid mx-auto d-block img-thumbnail" height="300" src=" {{ substitute.image }}" />
-                </a>
-                <p class="text-center">{{ substitute.name }}<br></p>
-                {% if user.is_authenticated %}
-                <form method="POST">
-                    {% csrf_token %}
-                    <input type="hidden" name="product" value="{{ product_code}}"/>
-                    <input type="hidden" name="substitute" value="{{ substitute.code }}"/>
-                    <input type="submit" class="btn btn-primary btn-block" value="Sauvegarder" />
-                </form>
-                {% endif %}
-                <br>
+                <div class="product" mx-auto">
+                    <a href=" {% url "product:detail" substitute.code %}">
+                        <div class="nutriscore">{{ substitute.nutriscore_grade }}</div>
+                        <img class="product-img" height="300" src=" {{ substitute.image }}" />
+                    </a>
+                    <p class="text-center">{{ substitute.name }}<br></p>
+                    {% if user.is_authenticated %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="product" value="{{ product_code}}"/>
+                        <input type="hidden" name="substitute" value="{{ substitute.code }}"/>
+                        <input type="submit" class="btn btn-primary btn-block" value="Sauvegarder" />
+                    </form>
+                    {% endif %}
+                    <br>
+                </div>
             </div>
             {% endfor %}
         </div>

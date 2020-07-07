@@ -9,10 +9,13 @@
         <div class="row text-center">
             {% for product in products%}
             <div class=" col-12 col-md-4">
-                <a href=" {% url "product:search_substitutes" product.code%}">
-                    <img class="img-fluid mx-auto d-block img-thumbnail" src=" {{ product.image }}" />
-                </a>
-                <p class="text-center">{{ product.name }}</p>
+                <div class="product mx-auto">
+                    <a href=" {% url "product:search_substitutes" product.code%}">
+                        <div class="nutriscore">{{ product.nutriscore_grade }}</div>
+                        <img class="product-img" src=" {{ product.image }}" />
+                    </a>
+                    <p class="text-center">{{ product.name }}</p>
+                </div>
             </div>
         {% endfor %}
     </div>
