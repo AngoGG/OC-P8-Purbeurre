@@ -51,8 +51,10 @@
                         </a></li>
                     {% endif %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">
-                            <div class="ml-2"><img src="{% static "img/carrot1.png" %}" alt="My image" width="35px"
-                                    height="auto"></div>
+                        <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
+                            <div class="ml-2">
+                                <img src="{% static "img/carrot1.png" %}" alt="My image" width="35px" height="auto">
+                            </div>
                         </a>
                     </li>
                     {% if not user.is_authenticated %}

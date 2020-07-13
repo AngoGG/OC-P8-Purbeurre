@@ -1,0 +1,25 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="page-section bg-dark text-white">
+    <div class="container">
+        <h2 class="text-center mt-0">Produits favoris</h2>
+        <hr class="divider my-4" />
+        <div class="row text-center">
+            {% for product in products%}
+            <div class=" col-12 col-md-4">
+                <div class="product mx-auto">
+                    <a href=" {% url "product:detail" product.substitute.code %}">
+                        <div class="nutriscore">{{ product.substitute.nutriscore_grade }}</div>
+                        <img class="product-img" src=" {{ product.substitute.image }}" />
+                    </a>
+                    <p class="text-center">{{ product.substitute.name }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r"^$", include("app.urls")),
     url(r"products/", include("product.urls")),
     url(r"user/", include("user.urls")),
+    url(r"favorites/", include("substitute.urls")),
 ]
 
 if settings.DEBUG:
