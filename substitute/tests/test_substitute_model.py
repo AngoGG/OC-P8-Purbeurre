@@ -30,3 +30,28 @@ class TestSubstitute(TestCase):
             assert substitute.user.email == "test@mail.com"
             assert substitute.product.code == product_code
             assert substitute.substitute.code == code_substitute
+
+    @pytest.mark.django_db(transaction=True)
+    def test_get_favorite(self) -> None:
+        user = User.objects.create_user(
+            email="test@mail.com",
+            password="password8chars",
+            first_name="firstname",
+            last_name="lastname",
+        )
+        product_code = "3068320115160"
+        code_substitute = "3068320115161"
+        for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
+            Product.objects.create(**product)
+
+        product = Product.objects.filter(code=product_code).first()
+        substitute = Product.objects.filter(code=code_substitute).first()
+
+        Substitute.objects.create(user=user, product=product, substitute=substitute)
+
+        favorite = Substitute.get_favorite(user)
+
+        for fav in favorite:
+            assert fav.user.email == "test@mail.com"
+            assert fav.product_id == product_code
+            assert fav.substitute_id == code_substitute

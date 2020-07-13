@@ -28,3 +28,7 @@ class Substitute(models.Model):
     @staticmethod
     def add_favorite(user, product, substitute):
         Substitute.objects.create(user=user, product=product, substitute=substitute)
+
+    @staticmethod
+    def get_favorite(user):
+        return Substitute.objects.filter(user=user)
