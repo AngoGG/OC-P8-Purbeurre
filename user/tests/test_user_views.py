@@ -82,6 +82,7 @@ class TestLogoutView(TestCase):
         response = client.get("/user/logout",)
         assert response.status_code == 302  # Testing redirection
 
+
 class TestProfileView(TestCase):
     def test_profile_get(self):
         User.objects.create_user(
