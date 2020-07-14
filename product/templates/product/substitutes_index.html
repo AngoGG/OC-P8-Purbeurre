@@ -21,7 +21,15 @@
                         {% csrf_token %}
                         <input type="hidden" name="product" value="{{ product_code}}"/>
                         <input type="hidden" name="substitute" value="{{ substitute.code }}"/>
-                        <input type="submit" class="btn btn-primary btn-block" value="Sauvegarder" />
+                        {% if substitute.code in favorites %}
+                        <button class="btn btn-success active save_button btn-block" disabled>
+                          <i class="fas fa-check"></i> Sauvegardé
+                        </button>
+                        {% else %}
+                        <button type="submit" class="btn btn-warning btn-block">
+                          <i class="fas fa-save"></i> Sauvegarder
+                        </button>
+                        {% endif %}
                     </form>
                     {% endif %}
                     <br>
