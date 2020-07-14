@@ -42,32 +42,46 @@
                         </form>
                     </li>
                     {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:profile" %}">
-                            <div class="ml-2">Mon compte</div>
-                        </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url "user:profile" %}">
+                            <div class="ml-2">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        </a>
+                    </li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
-                            <div class="ml-2">Créer un compte</div>
-                        </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
+                            <div class="ml-2">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                        </a>
+                    </li>
                     {% endif %}
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">
                         <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
                             <div class="ml-2">
-                                <img src="{% static "img/carrot1.png" %}" alt="My image" width="35px" height="auto">
+                                <i class="fas fa-carrot" alt="Mes Aliments"></i>
                             </div>
                         </a>
                     </li>
                     {% if not user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">
-                            <div class="ml-2">Connexion</div>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">
+                            <div class="ml-2">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </div>
                         </a>
                     </li>
                     {% else %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url "user:logout" %}">
-                            <div class="ml-2">Déconnexion</div>
-                        </a></li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url "user:logout" %}">
+                            <div class="ml-2">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </div>
+                        </a>
+                    </li>
                     {% endif %}
-
                 </ul>
             </div>
         </div>
