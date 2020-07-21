@@ -12,7 +12,7 @@
                 <div class="product mx-auto">
                     <a href=" {% url "product:search_substitutes" product.code%}">
                         <div class="nutriscore">{{ product.nutriscore_grade }}</div>
-                        <img class="product-img" src=" {{ product.image }}" />
+                        <img class="product-img rounded mx-auto d-block" src=" {{ product.image }}" />
                     </a>
                     <p class="text-center">{{ product.name }}</p>
                 </div>

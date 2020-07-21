@@ -13,7 +13,7 @@
                 <div class="product mx-auto">
                     <a href=" {% url "product:detail" substitute.code %}">
                         <div class="nutriscore">{{ substitute.nutriscore_grade }}</div>
-                        <img class="product-img" height="300" src=" {{ substitute.image }}" />
+                        <img class="product-img rounded mx-auto d-block" src=" {{ substitute.image }}" />
                     </a>
                     <p class="text-center">{{ substitute.name }}<br></p>
                     {% if user.is_authenticated %}
