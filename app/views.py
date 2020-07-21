@@ -4,7 +4,12 @@ from django.views.generic import View
 
 # Create your views here.
 
+
 class HomeView(View):
-    def get(self,request):
+    def get(self, request):
         return render(request, "app/home.html")
 
+
+class LegalNoticeView(View):
+    def get(self, request):
+        return render(request, "app/legal_notice.html")
