@@ -33,8 +33,8 @@
                 <img src="{% static "img/logo_pur_beurre.png" %}" alt="My image" width="30px" height="auto">
                 Pur Beurre
             </a>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+            <div class="collapse navbar-collapse " id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-auto lg-auto">
                     <li class="nav-item">
                         <form action="{% url "product:index" %}" method="get">
                             {% csrf_token %}
@@ -94,14 +94,14 @@
     {% endblock %}
 
     <!-- Footer-->
-    <footer class="bg-light footer py-3">
+    <footer class="bg-light footer py-3 fixed-bottom">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 ml-auto text-center mb-5 mb-lg-0">
-                    <a href="#">Mentions Légales</a>
+                    <a href="{% url "app:legal_notice" %}">Mentions Légales</a>
                 </div>
                 <div class="col-lg-2 mr-auto text-center">
-                    <a href="#">Contact</a>
+                    <a href="#contact">Contact</a>
                 </div>
             </div>
         </div>
