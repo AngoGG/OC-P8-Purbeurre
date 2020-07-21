@@ -18,13 +18,12 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
 
-
 urlpatterns = [
-    url(r"admin/", admin.site.urls),
-    url(r"^$", include("app.urls")),
-    url(r"products/", include("product.urls")),
-    url(r"user/", include("user.urls")),
-    url(r"favorites/", include("substitute.urls")),
+    path(r"admin/", admin.site.urls),
+    path(r"", include("app.urls")),
+    path(r"products/", include("product.urls")),
+    path(r"user/", include("user.urls")),
+    path(r"favorites/", include("substitute.urls")),
 ]
 
 if settings.DEBUG:
