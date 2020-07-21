@@ -11016,7 +11016,8 @@ hr.light {
 @media (min-width: 992px) {
   #mainNav {
     box-shadow: none;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: rgba(5, 5, 5, 0.74);
   }
 
   #mainNav .navbar-brand {
@@ -11041,24 +11042,24 @@ hr.light {
   }
 
   #mainNav.navbar-scrolled {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    /* box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); */
+    background-color: rgba(5, 5, 5, 0.74);
   }
 
   #mainNav.navbar-scrolled .navbar-brand {
-    color: #212529;
+    color: #fff;
   }
 
   #mainNav.navbar-scrolled .navbar-brand:hover {
-    color: #f4623a;
+    color: #fff;
   }
 
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link {
-    color: #212529;
+    color: #fff;
   }
 
   #mainNav.navbar-scrolled .navbar-nav .nav-item .nav-link:hover {
-    color: #f4623a;
+    color: #fff;
   }
 }
 
@@ -11193,4 +11194,12 @@ header.masthead h1 {
   width: 300px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/*General classes*/
+.title {
+  color: white;
+  background-color: rgba(5, 5, 5, 0.74);
+  border-radius: 0.1em;
+  padding: 0.5em;
 }
