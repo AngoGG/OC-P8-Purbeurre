@@ -6,7 +6,8 @@ from . import views
 app_name: str = "substitute"
 
 urlpatterns = [
-    url(r"^$", views.FavoritesSubstituteViews.as_view(), name="favorites",),
+    url(r"^$", views.FavoritesSubstituteView.as_view(), name="favorites",),
+    path(r"add", views.FavoriteSaveView.as_view(), name="save"),
 ]
 
 if settings.DEBUG:

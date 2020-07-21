@@ -35,24 +35,3 @@ class TestSubstituteView(TestCase):
         response = client.get(f"/products/substitutes/{product_code}/")
         assert response.status_code == 200
 
-    @pytest.mark.django_db(transaction=True)
-    def test_detail_post(self) -> None:
-        User.objects.create_user(
-            email="test@mail.com",
-            password="password8chars",
-            first_name="firstname",
-            last_name="lastname",
-        )
-        client: Client = Client()
-        client.login(username="test@mail.com", password="password8chars")
-        product_code = "3068320115161"
-        category = Category.objects.create(name="Boissons")
-        for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
-            Product.objects.create(**product)
-            category.products.add(product["code"])
-        response = client.post(
-            f"/products/substitutes/{product_code}/",
-            {"product": "3068320115161", "substitute": "3068320115161",},
-        )
-        assert response.status_code == 200
-

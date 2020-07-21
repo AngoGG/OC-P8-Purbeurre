@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .models import Product, Category
@@ -39,11 +39,3 @@ class SubstituteIndexView(View):
                 "favorites": user_favorite_list,
             },
         )
-
-    def post(self, request, code_product):
-        user = request.user
-        product = Product.objects.filter(code=request.POST.get("product")).first()
-        substitute = Product.objects.filter(code=request.POST.get("substitute")).first()
-        Substitute.add_favorite(user, product, substitute)
-        return JsonResponse({"favori_added": "success"})
-        # return render(request, "app/home.html", {"favori_added": "success",},)
