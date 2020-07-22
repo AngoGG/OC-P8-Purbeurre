@@ -24,9 +24,9 @@ LOGIN_URL = "user/login"
 SECRET_KEY = "96^=-0+ri#h^a6cfr-t8vl)wck5#*1bqzmxje0thk(yorj_=42"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False if os.environ.get("ENV", "development") == "production" else True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".herokuapps.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -84,23 +84,21 @@ WSGI_APPLICATION = "purbeurre.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "purbeurre",
-#         "USER": environ["USER"],
-#         "PASSWORD": environ["PASSWORD"],
-#         "HOST": "127.0.0.1",
-#         "PORT": "5432",
-#     }
-# }
-
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "purbeurre",
+        "USER": os.environ.get["EMAIL_USER"],
+        "PASSWORD": os.environ.get["EMAIL_PASSWORD"],
     }
 }
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.sqlite3",
+#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#     }
+# }
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -139,3 +137,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+if os.environ.get("ENV"):
+    import django_heroku
+
+    django_heroku.settings(locals())

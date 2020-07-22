@@ -16,6 +16,8 @@ requests = "*"
 pytest-django = "*"
 pytest-cov = "*"
 coverage = "*"
+django-heroku = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.8"
