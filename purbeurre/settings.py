@@ -21,7 +21,9 @@ LOGIN_URL = "user/login"
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "96^=-0+ri#h^a6cfr-t8vl)wck5#*1bqzmxje0thk(yorj_=42"
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "96^=-0+ri#h^a6cfr-t8vl)wck5#*1bqzmxje0thk(yorj_=42"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.environ.get("ENV", "development") == "production" else True
@@ -84,21 +86,22 @@ WSGI_APPLICATION = "purbeurre.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "purbeurre",
-        "USER": os.environ.get("EMAIL_USER"),
-        "PASSWORD": os.environ.get("EMAIL_PASSWORD"),
+if os.environ.get("ENV") == "production":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "purbeurre",
+            "USER": os.environ.get("EMAIL_USER"),
+            "PASSWORD": os.environ.get("EMAIL_PASSWORD"),
+        }
     }
-}
-
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#     }
-# }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 
 INTERNAL_IPS = [
     "127.0.0.1",
