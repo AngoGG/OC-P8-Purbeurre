@@ -143,7 +143,7 @@ STATIC_URL = "/static/"
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "app/static"),)
 
-if os.environ.get("ENV"):
+if os.environ.get("ENV") == "production":
     import django_heroku
 
     django_heroku.settings(locals())
