@@ -27,14 +27,16 @@
 </head>
 
 <body id="page-top">
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="{% url "app:home" %}">
                 <img src="{% static "img/logo_pur_beurre.png" %}" alt="My image" width="30px" height="auto">
                 Pur Beurre
-            </a>
-            <div class="collapse navbar-collapse " id="navbarResponsive">
-                <ul class="navbar-nav ml-auto my-auto lg-auto">
+            </a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                {% comment %} <ul class="navbar-nav ml-auto my-auto lg-auto"> {% endcomment %}
                     <li class="nav-item">
                         <form action="{% url "product:index" %}" method="get">
                             {% csrf_token %}
@@ -50,6 +52,13 @@
                             </div>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
+                            <div class="ml-2">
+                                <i class="fas fa-carrot" style="font-size:36px;"></i>
+                            </div>
+                        </a>
+                    </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
@@ -59,13 +68,6 @@
                         </a>
                     </li>
                     {% endif %}
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#">
-                        <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-carrot" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
                     {% if not user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">
@@ -87,6 +89,7 @@
             </div>
         </div>
     </nav>
+
 
 
     {% block content %}
