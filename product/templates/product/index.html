@@ -2,12 +2,20 @@
 {% load static %}
 {% block content %}
 
-<section class="page-section bg-dark text-white">
+
+<section class="page-section h-25 first_section bg-dark text-white">
     <div class="container">
-        <h2 class="text-center mt-0">Produits</h2>
-        <hr class="divider my-4" />
+        <div class="row justify-content-center">
+            <div class=" title col-lg-auto">
+                <h1 class=" section_title text-center mt-0">Produits</h1>
+            </div>
+        </div>
+    </div>
+  </section>
+<section class="page-section h-auto">
+    <div class="container">
         <div class="row text-center">
-            {% for product in products%}
+        {% for product in products%}
             <div class=" col-12 col-md-4">
                 <div class="product mx-auto">
                     <a href=" {% url "product:search_substitutes" product.code%}">
@@ -18,6 +26,7 @@
                 </div>
             </div>
         {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}
