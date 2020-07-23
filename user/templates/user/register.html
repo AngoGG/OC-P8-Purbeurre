@@ -1,4 +1,5 @@
 {% extends "app/base.html" %}
+{% load static %}
 
 {% block title %}
 - Création Compte{{ block.super }}
@@ -6,11 +7,19 @@
 
 {% block content %}
 
-<section class="page-section bg-dark text-white">
+<section class="page-section bg-top-section text-white" style="background-image: url('{% static 'img/background.jpg' %}');">
     <div class="container">
-        <h2 class="text-white font-weight-bold text-center">Veuillez entrer les informations ci-dessous afin de créer
-            votre compte</h2>
-        <hr class="divider my-4">
+        <div class="row justify-content-center">
+            <div class=" title col-lg-auto">
+                <h2 class="section_title text-center mt-">Veuillez entrer les informations ci-dessous afin de créer votre compte
+                </h2>
+            </div>
+        </div>
+    </div>
+  </section>
+
+<section class="page-section bg-biscuit text-white">
+    <div class="container">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-lg-8 text text-center">
@@ -30,7 +39,7 @@
                         {% endfor %}
                     </div>
                     {% endfor %}
-                    <button type="submit" class="btn btn-primary btn-block">Créer Compte</button>
+                    <button type="submit" class="btn btn-primary bg-chocolate btn-block">Créer Compte</button>
                 </form>
             </div>
         </div>

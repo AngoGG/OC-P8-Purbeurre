@@ -2,11 +2,20 @@
 {% load static %}
 {% block content %}
 
-<section class="page-section bg-dark text-white">
+
+<section class="page-section h-25 first_section bg-mussels text-white">
     <div class="container">
-        <h1 class="text-center mt-0">{{ product_name }}</h1>
-        <h2 class="text-center mt-0">Vous pouvez remplacer ce produit par l'un des suivants:</h2>
-        <hr class="divider my-4" />
+        <div class="row justify-content-center">
+            <div class=" title col-lg-auto">
+                <h1 class=" section_title text-center mt-0">{{ product_name }}</h1>
+                <h2 class="text-center mt-0">Vous pouvez remplacer ce produit par l'un des suivants:</h2> 
+            </div>
+        </div>
+    </div>
+  </section>
+
+<section class="page-section bg-biscuit h-auto">
+    <div class="container">
         <div class="row text-center">
             {% for substitute in substitutes%}
             <div class=" col-12 col-md-4">
@@ -15,7 +24,7 @@
                         <div class="nutriscore">{{ substitute.nutriscore_grade }}</div>
                         <img class="product-img rounded mx-auto d-block" src=" {{ substitute.image }}" />
                     </a>
-                    <p class="text-center">{{ substitute.name }}<br></p>
+                    <h4 class="text-white mt-0">{{ substitute.name }}</h4>
                     {% if user.is_authenticated %}
                     <form class="save" id="save_favorite" method="POST" action="{% url 'substitute:save' %}">
                         {% csrf_token %}
@@ -26,7 +35,7 @@
                           <i class="fas fa-check"></i> Sauvegardé
                         </button>
                         {% else %}
-                        <button type="submit" class="btn btn-warning btn-block">
+                        <button type="submit" class="btn bg-chocolate btn-block text-white">
                           <i class="fas fa-save"></i> Sauvegarder
                         </button>
                         {% endif %}

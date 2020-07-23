@@ -6,15 +6,17 @@
 {% endblock %}
 
 {% block content %}
-
-<section class="page-section bg-dark text-white h-25" style="background-image: url('{% static 'img/background.jpg' %}'); background-size: 100% 100%" >
+<section class="page-section h-25 first_section bg-mussels text-white" style="background-image: url('{% static 'img/background.jpg' %}'); background-size: 100% 100%" >
     <div class="container">
-        <h2 class="text-white font-weight-bold text-center">
-            <p>Ahoy, {{ user.first_name }} </p>
-        </h2>
+        <div class="row justify-content-center">
+            <div class=" title col-lg-auto">
+                <h1 class="section_title text-center mt-0">Ahoy, {{ user.first_name }} </h1>
+            </div>
+        </div>
     </div>
 </section>
-<section class="page-section bg-primary text-white">
+
+<section class="page-section bg-biscuit h-auto">
     <div class="container">
         <div class="row">
             <div class="col-sm-2"></div>

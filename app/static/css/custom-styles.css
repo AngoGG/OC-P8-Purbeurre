@@ -1,0 +1,74 @@
+.nutriscore {
+    position: relative;
+    left: 90%;
+    top: 20px;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 50%;
+    background-color: #056e26;
+    color: white;
+    text-align: center;
+    padding-top: 0.5rem;
+    padding-right: 0.1rem;
+}
+
+.product {
+    width: 300px;
+    height: 300;
+}
+
+.product-img {
+    display: block;
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*General classes*/
+.title {
+    color: white;
+    background-color: rgba(5, 5, 5, 0.74);
+    border-radius: 0.1em;
+    padding: 0.5em;
+}
+
+.nav-form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: rgb(200, 193, 193);
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.bg-chocolate {
+    background-color: #c45525 !important;
+}
+
+.bg-mussels {
+    background-color: #345a61 !important;
+}
+
+.bg-funny {
+    background-color: #86ebe6 !important;
+}
+
+.bg-caramel {
+    background-color: #de9440 !important;
+}
+
+.bg-biscuit {
+    background-color: #e8a75d !important;
+}
+
+.bg-top-section {
+    background-size: 100% 100%
+}
