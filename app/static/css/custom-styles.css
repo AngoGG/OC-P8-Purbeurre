@@ -48,3 +48,27 @@
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
+.bg-chocolate {
+    background-color: #c45525 !important;
+}
+
+.bg-mussels {
+    background-color: #345a61 !important;
+}
+
+.bg-funny {
+    background-color: #86ebe6 !important;
+}
+
+.bg-caramel {
+    background-color: #de9440 !important;
+}
+
+.bg-biscuit {
+    background-color: #e8a75d !important;
+}
+
+.bg-top-section {
+    background-size: 100% 100%
+}
