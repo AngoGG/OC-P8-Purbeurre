@@ -16,16 +16,17 @@
     <div class="container">
         <div class="row text-center">
             {% for product in products%}
-            <div class=" col-12 col-md-4">
-                <div class="product mx-auto">
-                    <a href=" {% url "product:detail" product.substitute.code %}">
-                        <div class="nutriscore">{{ product.substitute.nutriscore_grade }}</div>
-                        <img class="product-img rounded mx-auto d-block" src=" {{ product.substitute.image }}" />
+            <div class="custom-card col-12 col-md-4 bg-biscuit">
+                <div class="product card-body">
+                    <img class="nutriscore" src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ product.substitute.nutriscore_grade }}.png">
+                    <a class="image-popup-no-margins" href="{{ product.substitute.image }}">
+                        <img id="productImage" class="product-img" src=" {{ product.substitute.image }}" />
                     </a>
-                    <h4 class="text-white mt-0">{{ product.substitute.name }}</h4>
                 </div>
+                <h5 class="card-title text-white">{{ product.substitute.name  }}</h5>
+                <a href="{% url "product:detail" product.substitute.code %}" class="btn bg-chocolate btn-block text-white" role="button"><i class="fas fa-search"></i>Voir détail du produit</a>
             </div>
-        {% endfor %}
+            {% endfor %}
     </div>
 </section>
 {% endblock %}
