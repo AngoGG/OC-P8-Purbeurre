@@ -35,6 +35,7 @@ class SubstituteIndexView(View):
             {
                 "product_code": code_product,
                 "product_name": product.name,
+                "product_image": product.image,
                 "substitutes": substitutes,
                 "favorites": user_favorite_list,
             },
