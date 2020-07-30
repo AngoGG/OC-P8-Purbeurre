@@ -1,28 +1,51 @@
 .nutriscore {
-    position: relative;
-    left: 90%;
-    top: 20px;
-    height: 2.5rem;
-    width: 2.5rem;
-    border-radius: 50%;
-    background-color: #056e26;
-    color: white;
-    text-align: center;
-    padding-top: 0.5rem;
-    padding-right: 0.1rem;
+    position: absolute;
+    width: 25%;
+    height: auto;
+    right: 5px;
+    top: 10px;
 }
 
 .product {
+    position: relative;
     width: 300px;
-    height: 300;
+    height: 300px;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+
 }
 
 .product-img {
-    display: block;
-    height: 300px;
-    width: 300px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
     margin-left: auto;
     margin-right: auto;
+}
+
+.product-img:hover {
+    opacity: 0.5;
+    cursor: zoom-in;
+}
+
+.custom-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.custom-card-footer {
+    height: 75px;
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 /*General classes*/
@@ -132,4 +155,20 @@ input[type=submit] {
     /*when navigating through the items using the arrow keys:*/
     background-color: DodgerBlue !important;
     color: #ffffff;
+}
+
+/* padding-bottom and top for image */
+.mfp-no-margins img.mfp-img {
+    padding: 0;
+}
+
+/* position of shadow behind the image */
+.mfp-no-margins .mfp-figure:after {
+    top: 0;
+    bottom: 0;
+}
+
+/* padding for main container */
+.mfp-no-margins .mfp-container {
+    padding: 0;
 }
