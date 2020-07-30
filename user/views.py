@@ -29,7 +29,8 @@ class RegistrationView(FormView):
             "first_name": request.POST.get("first_name"),
             "last_name": request.POST.get("last_name"),
         }
-        User.objects.create_user(email=email, password=password, **extra_fields)
+        user = User.objects.create_user(email=email, password=password, **extra_fields)
+        login(self.request, user)
         return redirect("/")
 
 

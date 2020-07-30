@@ -17,6 +17,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
 from . import views
+from product.views import ProductAutocompleteView
 
 
 app_name: str = "app"
@@ -24,6 +25,11 @@ app_name: str = "app"
 urlpatterns = [
     path(r"", views.HomeView.as_view(), name="home"),
     path(r"legal", views.LegalNoticeView.as_view(), name="legal_notice"),
+    path(
+        r"product_autocomplete",
+        ProductAutocompleteView.as_view(),
+        name="product_autocomplete",
+    ),
 ]
 
 if settings.DEBUG:

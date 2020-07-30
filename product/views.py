@@ -9,8 +9,8 @@ from substitute.models import Substitute
 class IndexView(View):
     def get(self, request):
         products: Product = Product.objects.filter(
-            nutriscore_grade__gt="c", name__contains=request.GET.get("search")
-        )
+            name__istartswith=request.GET.get("search")
+        ).order_by("-nutriscore_grade")
         return render(request, "product/index.html", {"products": products})
 
 
@@ -35,7 +35,16 @@ class SubstituteIndexView(View):
             {
                 "product_code": code_product,
                 "product_name": product.name,
+                "product_image": product.image,
                 "substitutes": substitutes,
                 "favorites": user_favorite_list,
             },
         )
+
+
+class ProductAutocompleteView(View):
+    def get(self, request):
+        products_list = []
+        for product in Product.objects.all():
+            products_list.append(product.name)
+        return JsonResponse(products_list, safe=False)
