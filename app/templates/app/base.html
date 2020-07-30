@@ -41,7 +41,7 @@
                     <li class="nav-item">
                         <form action="{% url "product:index" %}" method="get">
                             {% csrf_token %}
-                            <input id="search" type="text" name="search" class="input-sm nav-form-control"
+                            <input type="text" name="search" class="input-sm nav-form-control"
                                 placeholder="Rechercher" required>
                         </form>
                     </li>
@@ -122,6 +122,7 @@
     <script src="{% static "js/scripts.js" %}"></script>
     <!-- personal JS -->
     <script src="{% static "js/add-favorite.js" %}"></script>
+    <script src="{% static "js/autocomplete.js" %}"></script>
         
 </body>
 

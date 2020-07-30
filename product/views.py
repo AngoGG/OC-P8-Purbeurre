@@ -40,3 +40,11 @@ class SubstituteIndexView(View):
                 "favorites": user_favorite_list,
             },
         )
+
+
+class ProductAutocompleteView(View):
+    def get(self, request):
+        products_list = []
+        for product in Product.objects.all():
+            products_list.append(product.name)
+        return JsonResponse(products_list, safe=False)
