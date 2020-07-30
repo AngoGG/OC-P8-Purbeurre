@@ -3,11 +3,17 @@
 {% block content %}
 
 
-<section class="page-section h-25 first_section bg-mussels text-white">
+<section class="page-section h-25 first_section bg-mussels text-white" style="background-image: url('{% static 'img/background.jpg' %}'); background-size: 100% 100%">
     <div class="container">
         <div class="row justify-content-center">
             <div class=" title col-lg-auto">
-                <h1 class=" section_title text-center mt-0">Produits</h1>
+                {% if not products%}
+                <h1 class=" section_title text-center mt-0">Aucun produit trouvé pour la recherche "<i>{{ request.GET.search }}</i>" 
+                    <br>Veuillez effectuer une nouvelle recherche
+                </h1>
+                {% else %}
+                <h1 class=" section_title text-center mt-0">Produits correspondants à la recherche "<i>{{ request.GET.search }}</i>"</h1>
+                {% endif %}
             </div>
         </div>
     </div>

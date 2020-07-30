@@ -9,8 +9,8 @@ from substitute.models import Substitute
 class IndexView(View):
     def get(self, request):
         products: Product = Product.objects.filter(
-            nutriscore_grade__gt="c", name__contains=request.GET.get("search")
-        )
+            name__istartswith=request.GET.get("search")
+        ).order_by("-nutriscore_grade")
         return render(request, "product/index.html", {"products": products})
 
 
