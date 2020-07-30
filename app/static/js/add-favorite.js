@@ -13,10 +13,10 @@ $(document).on('submit', '#save_favorite', function (e) {
         success: function (json) {
             form.after("<div><button class='btn btn-success active save_button btn-block' disabled><i class='fas fa-check'></i> Sauvegardé</button></div>");
             form.remove();
-            alert('Le produit a bien été enregistré en favori')
+            $("#successModal").modal();
         },
         error: function (json) {
-            alert('Une erreur est survenue lors de la sauvegarde');
+            $("#failModal").modal();
         }
     });
 });
