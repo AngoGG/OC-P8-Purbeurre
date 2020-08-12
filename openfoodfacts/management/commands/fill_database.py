@@ -19,7 +19,7 @@ class FillDatabase:
         for category in self.categories:
             result = self.api.get_data(category)
             category = Category.objects.create(name=category)
-            for product in self.clean_datas.get_product(result, category):
+            for product in self.clean_datas.get_product(result):
                 Product.objects.create(**product)
                 category.products.add(product["code"])
 
@@ -29,10 +29,11 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options) -> None:
         print("Lancement de la récupération des données de l'API OFF")
-
-        # Récupération des catégories à gérer
-        # Si catégories en argument go, sinon go YML
-        categories = ["Sodas", "Viandes", "Fromages", "Biscuits"]
+        categories = [
+            "Sodas",
+            "Desserts",
+            "Sauces",
+        ]
         fill_database: FillDatabase = FillDatabase(categories)
         fill_database.run()
 

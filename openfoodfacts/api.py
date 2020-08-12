@@ -32,7 +32,7 @@ class Api:
             "countries": "France",
             "purchase_places": "France",
             "page": 1,
-            "page_size": 50,
+            "page_size": 500,
             "json": 1,
         }
 
