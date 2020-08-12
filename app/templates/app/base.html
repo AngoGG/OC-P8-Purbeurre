@@ -15,7 +15,7 @@
     <link rel="icon" href="{% static "img/logo_pur_beurre-favicon.png" %}">
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-    
+
     <!-- Google fonts-->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Scope+One" rel="stylesheet" type="text/css">
@@ -34,59 +34,61 @@
             <a class="navbar-brand js-scroll-trigger" href="{% url "app:home" %}">
                 <img src="{% static "img/logo_pur_beurre.png" %}" alt="My image" width="30px" height="auto">
                 Pur Beurre
-            </a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            </a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                {% comment %} <ul class="navbar-nav ml-auto my-auto lg-auto"> {% endcomment %}
-                    <li class="nav-item">
-                        <form action="{% url "product:index" %}" method="get">
-                            {% csrf_token %}
-                            <input type="text" name="search" class="input-sm nav-form-control"
-                                placeholder="Rechercher" required>
-                        </form>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url "user:profile" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-user" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-carrot" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-user-plus" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% if not user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-sign-in-alt" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{% url "user:logout" %}">
-                            <div class="ml-2">
-                                <i class="fas fa-sign-out-alt" style="font-size:36px;"></i>
-                            </div>
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
+                    {% comment %} <ul class="navbar-nav ml-auto my-auto lg-auto"> {% endcomment %}
+                        <li class="nav-item">
+                            <form action="{% url "product:index" %}" method="get">
+                                {% csrf_token %}
+                                <input type="text" name="search" class="input-sm nav-form-control"
+                                    placeholder="Rechercher" required>
+                            </form>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url "user:profile" %}">
+                                <div class="ml-2">
+                                    <i class="fas fa-user" style="font-size:36px;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url "substitute:favorites" %}">
+                                <div class="ml-2">
+                                    <i class="fas fa-carrot" style="font-size:36px;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url "user:register" %}">
+                                <div class="ml-2">
+                                    <i class="fas fa-user-plus" style="font-size:36px;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if not user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url "user:login" %}">
+                                <div class="ml-2">
+                                    <i class="fas fa-sign-in-alt" style="font-size:36px;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger" href="{% url "user:logout" %}">
+                                <div class="ml-2">
+                                    <i class="fas fa-sign-out-alt" style="font-size:36px;"></i>
+                                </div>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
             </div>
         </div>
     </nav>
@@ -105,7 +107,7 @@
                     <a href="{% url "app:legal_notice" %}">Mentions Légales</a>
                 </div>
                 <div class="col-lg-2 mr-auto text-center">
-                    <a href="#contact">Contact</a>
+                    <a href="{% url "app:home" %}#contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -124,7 +126,7 @@
     <script src="{% static "js/add-favorite.js" %}"></script>
     <script src="{% static "js/autocomplete.js" %}"></script>
     <script src="{% static "js/image-modal.js" %}"></script>
-        
+
 </body>
 
 </html>
