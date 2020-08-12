@@ -24,21 +24,21 @@ class ConnectionForm(forms.Form):
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(
+    email: forms.EmailField = forms.EmailField(
         max_length=254,
         required=True,
         help_text="Obligatoire. Renseignez une addresse mail valide.",
     )
-    first_name = forms.CharField(
+    first_name: forms.CharField = forms.CharField(
         label="Prénom", max_length=30, required=False, help_text="Optionnel."
     )
-    last_name = forms.CharField(
+    last_name: forms.CharField = forms.CharField(
         label="Nom", max_length=30, required=False, help_text="Optionnel."
     )
 
     class Meta:
         model = User
-        fields = (
+        fields: tuple = (
             "email",
             "first_name",
             "last_name",

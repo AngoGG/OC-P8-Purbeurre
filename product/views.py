@@ -1,32 +1,39 @@
-from django.http import JsonResponse, Http404
-from django.shortcuts import render, redirect
+from typing import List
+from django.db.models.query import QuerySet
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import render
 from django.views.generic import View
-from .models import Product, Category
-from .views import Product
 from substitute.models import Substitute
+from .models import Product
 
-# Create your views here.
+
 class IndexView(View):
-    def get(self, request):
-        products: Product = Product.objects.filter(
+    def get(self, request: HttpRequest) -> HttpResponse:
+        products: QuerySet = Product.objects.filter(
             name__istartswith=request.GET.get("search")
         ).order_by("-nutriscore_grade")
         return render(request, "product/index.html", {"products": products})
 
 
 class DetailView(View):
-    def get(self, request, code_product):
-        product = Product.objects.get(code=code_product)
+    def get(self, request: HttpRequest, code_product: str) -> HttpResponse:
+        product: QuerySet = Product.objects.get(code=code_product)
         return render(request, "product/detail.html", {"product": product})
 
 
 class SubstituteIndexView(View):
-    def get(self, request, code_product):
-        product = Product.objects.get(code=code_product)
-        substitutes = Product.get_substitute(code_product, product.nutriscore_grade)
-        user_favorite_list = []
+    def get(self, request: HttpRequest, code_product: str) -> HttpResponse:
+        """Get all the substitute of the requested product
+        and send it with the substitute template.
+        """
+
+        product: QuerySet = Product.objects.get(code=code_product)
+        substitutes: QuerySet = Product.get_substitute(
+            code_product, product.nutriscore_grade
+        )
+        user_favorite_list: List = []
         if request.user.is_authenticated:
-            user_favorites = Substitute.get_favorite(request.user)
+            user_favorites: QuerySet = Substitute.get_favorite(request.user)
             for favorite in user_favorites:
                 user_favorite_list.append(favorite.substitute_id)
         return render(
@@ -43,8 +50,12 @@ class SubstituteIndexView(View):
 
 
 class ProductAutocompleteView(View):
-    def get(self, request):
-        products_list = []
+    def get(self, request) -> HttpResponse:
+        """Get and send the list of all products names
+        in database for the autocompletion.
+        """
+
+        products_list: List = []
         for product in Product.objects.all():
             products_list.append(product.name)
         return JsonResponse(products_list, safe=False)
