@@ -13,16 +13,17 @@ Including another URLconfî
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from typing import List
 from django.urls import path
 from django.conf import settings
 from django.conf.urls import include, url
-from . import views
 from product.views import ProductAutocompleteView
+from . import views
 
 
 app_name: str = "app"
 
-urlpatterns = [
+urlpatterns: List = [
     path(r"", views.HomeView.as_view(), name="home"),
     path(r"legal", views.LegalNoticeView.as_view(), name="legal_notice"),
     path(

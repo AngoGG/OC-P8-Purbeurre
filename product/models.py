@@ -20,18 +20,20 @@ class Product(models.Model):
     salt_100g: models.FloatField = models.FloatField(null=True)
     kcal_100g: models.FloatField = models.FloatField(null=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
     @staticmethod
-    def get_substitute(product_code):
+    def get_substitute(
+        product_code: str, product_nutriscore: str
+    ) -> models.query.QuerySet:
         product_category = Product.get_category(product_code)[0]
         return Product.objects.filter(
-            nutriscore_grade__lte="c", category__name=product_category
-        )
+            nutriscore_grade__lte=product_nutriscore, category__name=product_category
+        ).order_by("nutriscore_grade")
 
     @staticmethod
-    def get_category(product_code):
+    def get_category(product_code: str) -> models.query.QuerySet:
         product = Product.objects.get(pk=product_code)
         return product.category_set.all()
 
@@ -40,5 +42,5 @@ class Category(models.Model):
     name: models.CharField = models.CharField(max_length=255, blank=False, unique=True)
     products: models.ManyToManyField = models.ManyToManyField(Product)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name

@@ -1,4 +1,5 @@
 import pytest
+from django.db.models.query import QuerySet
 from django.test import TestCase
 from product.models import Product
 from substitute.models import Substitute
@@ -9,22 +10,25 @@ from user.models import User
 class TestSubstitute(TestCase):
     @pytest.mark.django_db(transaction=True)
     def test_add_favorite(self) -> None:
-        user = User.objects.create_user(
+        """Test if a favorite is correctly saved in database
+        """
+
+        user: User = User.objects.create_user(
             email="test@mail.com",
             password="password8chars",
             first_name="firstname",
             last_name="lastname",
         )
-        product_code = "3068320115160"
-        code_substitute = "3068320115161"
+        product_code: str = "3068320115160"
+        code_substitute: str = "3068320115161"
         for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
             Product.objects.create(**product)
 
-        product = Product.objects.filter(code=product_code).first()
-        substitute = Product.objects.filter(code=code_substitute).first()
+        product: QuerySet = Product.objects.filter(code=product_code).first()
+        substitute: QuerySet = Product.objects.filter(code=code_substitute).first()
 
         Substitute.add_favorite(user, product, substitute)
-        substitutes = Substitute.objects.filter(user=user)
+        substitutes: QuerySet = Substitute.objects.filter(user=user)
         assert len(substitutes) == 1
         for substitute in substitutes:
             assert substitute.user.email == "test@mail.com"
@@ -33,23 +37,25 @@ class TestSubstitute(TestCase):
 
     @pytest.mark.django_db(transaction=True)
     def test_get_favorite(self) -> None:
-        user = User.objects.create_user(
+        """Test the correct retrieving of a user favorites products
+        """
+        user: User = User.objects.create_user(
             email="test@mail.com",
             password="password8chars",
             first_name="firstname",
             last_name="lastname",
         )
-        product_code = "3068320115160"
-        code_substitute = "3068320115161"
+        product_code: str = "3068320115160"
+        code_substitute: str = "3068320115161"
         for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
             Product.objects.create(**product)
 
-        product = Product.objects.filter(code=product_code).first()
-        substitute = Product.objects.filter(code=code_substitute).first()
+        product: QuerySet = Product.objects.filter(code=product_code).first()
+        substitute: QuerySet = Product.objects.filter(code=code_substitute).first()
 
         Substitute.objects.create(user=user, product=product, substitute=substitute)
 
-        favorite = Substitute.get_favorite(user)
+        favorite: QuerySet = Substitute.get_favorite(user)
 
         for fav in favorite:
             assert fav.user.email == "test@mail.com"
