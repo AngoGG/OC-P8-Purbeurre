@@ -23,7 +23,7 @@ class DetailView(View):
 class SubstituteIndexView(View):
     def get(self, request, code_product):
         product = Product.objects.get(code=code_product)
-        substitutes = Product.get_substitute(code_product)
+        substitutes = Product.get_substitute(code_product, product.nutriscore_grade)
         user_favorite_list = []
         if request.user.is_authenticated:
             user_favorites = Substitute.get_favorite(request.user)

@@ -24,11 +24,11 @@ class Product(models.Model):
         return self.name
 
     @staticmethod
-    def get_substitute(product_code):
+    def get_substitute(product_code, product_nutriscore):
         product_category = Product.get_category(product_code)[0]
         return Product.objects.filter(
-            nutriscore_grade__lte="c", category__name=product_category
-        )
+            nutriscore_grade__lte=product_nutriscore, category__name=product_category
+        ).order_by("nutriscore_grade")
 
     @staticmethod
     def get_category(product_code):

@@ -19,7 +19,7 @@ class TestProducts(TestCase):
         for product in Config.PRODUCT_AND_SUBSTITUTE_DATA["product"]:
             Product.objects.create(**product)
             category.products.add(product["code"])
-        substitute = Product.get_substitute(product_code)
+        substitute = Product.get_substitute(product_code, product["nutriscore_grade"])
         assert substitute[0].code == expected_code_substitute
 
     def test_get_category(self) -> None:
